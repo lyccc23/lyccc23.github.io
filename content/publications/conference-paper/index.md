@@ -1,22 +1,20 @@
 ---
-title: 'An example conference paper'
+title: 'Tree-KG: An expandable knowledge graph construction framework for knowledge-intensive domains'
 
 # Authors
 # If you created a profile for a user (e.g. the default `me` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - me
-  - Robert Ford
+  - Songjie Niu
+  - Kaisen Yang
+  - Rui Zhao
+  - Yichao Liu
+  - Zonglin Li
+  - Hongning Wang
+  - Wenguang Chen
 
-# Author notes (optional)
-author_notes:
-  - 'Equal contribution'
-  - 'Equal contribution'
+date: '2025-7'
 
-date: '2013-07-01T00:00:00Z'
-
-# Schedule page publish date (NOT publication's date).
-publishDate: '2017-01-01T00:00:00Z'
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -24,16 +22,16 @@ publishDate: '2017-01-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
-publication: In *HugoBlox Kit Conference*
-publication_short: In *ICW*
+publication: In *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics*
+publication_short: In *ACL*
 
-abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+abstract: In knowledge-intensive domains like scientific research, effective decisions rely on organizing and retrieving intricate data. Knowledge graphs (KGs) help by structuring entities, relations, and contextual dependencies, but building KGs in such domains is challenging due to inherent complexity, manual effort, and rapid evolution. Inspired by how humans organize knowledge hierarchically, we propose Tree-KG, an expandable framework that combines structured domain texts with advanced semantic techniques. First, Tree-KG builds a tree-like graph from textbook structures using large language models (LLMs) and domain-specific entities, creating an explicit KG. Then, through iterative expansion with flexible, predefined operators, it uncovers hidden KG while preserving semantic coherence. Experiments demonstrate that Tree-KG consistently surpasses competing methods, achieving the highest F1 scores (12–16% above the second-best), with notable performance (F1 0.81) on the Text-Annotated dataset, highlighting its effectiveness in extracting high-quality information from source texts. Additionally, Tree-KG provides superior structural alignment, domain-specific extraction, and cost-efficiency, delivering robust results with reduced token usage and adaptable, resource-conscious deployment.
 
 # Summary. An optional shortened abstract.
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
+#summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
 
-tags:
-  - Large Language Models
+#tags:
+#  - Large Language Models
 
 # Display this page in the Featured widget?
 featured: true
@@ -41,22 +39,22 @@ featured: true
 # Standard identifiers for auto-linking
 hugoblox:
   ids:
-    doi: 10.5555/123456
+    doi: 10.18653/v1/2025.acl-long.907
 
 # Custom links
 links:
   - type: pdf
-    url: ""
+    url: "https://aclanthology.org/2025.acl-long.907.pdf"
   - type: code
-    url: https://github.com/HugoBlox/kit
-  - type: dataset
-    url: https://github.com/HugoBlox/kit
-  - type: slides
-    url: https://www.slideshare.net/
-  - type: source
-    url: https://github.com/HugoBlox/kit
-  - type: video
-    url: https://youtube.com
+    url: https://github.com/thu-pacman/Tree-KG
+  #- type: dataset
+  #  url: https://github.com/HugoBlox/kit
+  #- type: slides
+  #  url: https://www.slideshare.net/
+  #- type: source
+  #  url: https://github.com/HugoBlox/kit
+  #- type: video
+  #  url: https://youtube.com
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
