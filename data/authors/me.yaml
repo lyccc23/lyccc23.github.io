@@ -24,7 +24,7 @@ affiliations:
 
 links:
   - icon: at-symbol
-    url: liuyicha23@mails.tsinghua.edu.cn
+    url: <a href="mailto:liuyicha23@mails.tsinghua.edu.cn"></a>
     label: E-mail Me
   - icon: brands/github
     url: https://github.com/lyccc23
