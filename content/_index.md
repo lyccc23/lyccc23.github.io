@@ -35,6 +35,6 @@ sections:
           - publications
         featured_only: true
     design:
-      view: list
+      view: showcase
       columns: 1
 ---
