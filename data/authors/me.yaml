@@ -2,21 +2,21 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: LIU YICHAO
+  display: Yichao Liu
   given: Yichao
   family: Liu
-  alternate: ''  # Example: 王伟
-  pronunciation: ''  # Example: Wáng Wěi
+  alternate: ''
+  pronunciation: ''
   pronouns: ''
 postnominals: []
 status:
-  icon: "🎓"
+  icon: ''
 role: Third-year undergraduate student, Department of Computer Science, Tsinghua University
 bio: |
   I am Yichao Liu, a third-year undergraduate student in the Department
   of Computer Science at Tsinghua University. My research interests focus
-  on world models and vision-language models. I look forward to exchanging ideas with
-  anyone interested in these topics.
+  on world models and vision-language models. I look forward to exchanging
+  ideas with anyone interested in these topics.
 
 affiliations:
   - name: Tsinghua University
@@ -37,6 +37,6 @@ interests:
 
 education:
   - degree: BS Computer Science
-    institution: THU
+    institution: Tsinghua University
     start: 2023-09-01
     end: 2027-05-31
