@@ -1,0 +1,405 @@
+{{- $author := index .Site.Data.authors "me" -}}
+{{- $avatar := resources.Get "media/authors/me.png" -}}
+{{- $publications := where (where .Site.RegularPages "Section" "publications") "Params.featured" true -}}
+<!doctype html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ $author.name.display }} | Personal Homepage</title>
+  <meta name="description" content="{{ .Site.Params.hugoblox.identity.description }}">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #f8fafc;
+      --text: #111827;
+      --muted: #5f6b7a;
+      --border: #e5e7eb;
+      --accent: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --link: #0f62fe;
+      --shadow: 0 16px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.08), transparent 30rem),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.62;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-shell {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 38px 0 30px;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 56px;
+    }
+
+    .profile {
+      position: sticky;
+      top: 34px;
+      align-self: start;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .avatar {
+      width: 168px;
+      height: 168px;
+      margin: 0 auto 22px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .profile h1 {
+      margin: 0;
+      font-size: 1.65rem;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .role {
+      margin: 10px 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.98rem;
+    }
+
+    .affiliation {
+      margin-top: 12px;
+      text-align: center;
+      font-weight: 650;
+    }
+
+    .profile-links {
+      margin-top: 20px;
+      display: grid;
+      gap: 9px;
+      font-size: 0.94rem;
+    }
+
+    .profile-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .profile-links a:hover {
+      border-color: #bfdbfe;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.92rem;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .content {
+      min-width: 0;
+      padding-top: 8px;
+    }
+
+    .section {
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      line-height: 1.25;
+    }
+
+    .hello {
+      padding: 28px 0 12px;
+    }
+
+    .hello h2 {
+      font-size: clamp(2.05rem, 4vw, 3.2rem);
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 780px;
+      color: #374151;
+      font-size: 1.08rem;
+    }
+
+    .interest-list,
+    .compact-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #374151;
+    }
+
+    .interest-list li,
+    .compact-list li {
+      margin: 8px 0;
+    }
+
+    .pub-card {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 24px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .pub-thumb {
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      border-radius: 12px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    .pub-thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .pub-title {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      line-height: 1.32;
+    }
+
+    .pub-authors,
+    .pub-venue,
+    .pub-summary {
+      margin: 0 0 8px;
+      color: #4b5563;
+      font-size: 0.96rem;
+    }
+
+    .pub-venue {
+      color: #1f2937;
+      font-weight: 650;
+    }
+
+    .pub-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .pub-actions a,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .pub-actions a:hover,
+    .pill:hover {
+      text-decoration: none;
+      background: #dbeafe;
+    }
+
+    .footer {
+      margin-top: 46px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      .site-shell {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: min(100% - 28px, 680px);
+        padding-top: 20px;
+      }
+
+      .profile {
+        position: static;
+      }
+
+      .pub-card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="site-shell">
+    <aside class="profile">
+      {{ with $avatar }}
+        {{ $avatarSmall := .Fill "336x336 Center" }}
+        <div class="avatar">
+          <img src="{{ $avatarSmall.RelPermalink }}" width="{{ $avatarSmall.Width }}" height="{{ $avatarSmall.Height }}" alt="{{ $author.name.display }}">
+        </div>
+      {{ end }}
+
+      <h1>{{ $author.name.display }}</h1>
+      <p class="role">{{ $author.role }}</p>
+      {{ with index $author.affiliations 0 }}
+        <p class="affiliation"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></p>
+      {{ end }}
+
+      <div class="profile-links">
+        {{ range $author.links }}
+          {{ $label := .label | default (replaceRE "^https?://(www\\.)?" "" .url) }}
+          {{ if hasPrefix .url "mailto:" }}
+            {{ $label = replace .url "mailto:" "" }}
+          {{ end }}
+          <a href="{{ .url }}" {{ if not (hasPrefix .url "mailto:") }}target="_blank" rel="noopener"{{ end }}>{{ $label }}</a>
+        {{ end }}
+        <a href="/uploads/resume.pdf" target="_blank" rel="noopener">CV</a>
+      </div>
+
+      <nav class="nav" aria-label="Homepage">
+        <a href="#about">About</a>
+        <a href="#interests">Interests</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+      </nav>
+    </aside>
+
+    <section class="content">
+      <section class="section hello" id="about">
+        <p class="eyebrow">Personal Homepage</p>
+        <h2>Hello, I'm {{ $author.name.given }}</h2>
+        <p class="lead">{{ $author.bio | plainify }}</p>
+      </section>
+
+      <section class="section" id="interests">
+        <h2>Research Interests</h2>
+        <ul class="interest-list">
+          {{ range $author.interests }}
+            <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </section>
+
+      <section class="section" id="publications">
+        <h2>Publications</h2>
+        {{ range $publications.ByDate.Reverse }}
+          {{ $pub := . }}
+          {{ $image := $pub.Resources.GetMatch "featured.*" }}
+          <article class="pub-card">
+            {{ with $image }}
+              {{ $thumb := .Fill "640x400 Center" }}
+              <a class="pub-thumb" href="{{ $pub.RelPermalink }}">
+                <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $pub.Title }}">
+              </a>
+            {{ end }}
+            <div>
+              <h3 class="pub-title"><a href="{{ $pub.RelPermalink }}">{{ $pub.Title }}</a></h3>
+              {{ with $pub.Params.authors }}
+                <p class="pub-authors">{{ delimit . ", " }}</p>
+              {{ end }}
+              {{ with $pub.Params.publication_short }}
+                <p class="pub-venue">{{ . | markdownify }}</p>
+              {{ else }}
+                {{ with $pub.Params.publication }}
+                  <p class="pub-venue">{{ . | markdownify }}</p>
+                {{ end }}
+              {{ end }}
+              {{ with $pub.Params.abstract }}
+                <p class="pub-summary">{{ . | plainify | truncate 240 }}</p>
+              {{ end }}
+              <div class="pub-actions">
+                <a href="{{ $pub.RelPermalink }}">Details</a>
+                {{ range $pub.Params.links }}
+                  <a href="{{ .url }}" target="_blank" rel="noopener">{{ .type | title }}</a>
+                {{ end }}
+              </div>
+            </div>
+          </article>
+        {{ end }}
+      </section>
+
+      <section class="section" id="experience">
+        <h2>Experience</h2>
+        <ul class="compact-list">
+          {{ range $author.education }}
+            <li>{{ dateFormat "2006.01" .start }} - {{ dateFormat "2006.01" .end }} &nbsp; {{ .degree }}, {{ .institution }}</li>
+          {{ end }}
+        </ul>
+      </section>
+
+      <footer class="footer">
+        © {{ now.Format "2006" }} {{ $author.name.display }}. Last updated: {{ now.Format "Jan. 2006" }}.
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
