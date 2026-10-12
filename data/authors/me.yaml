@@ -25,11 +25,13 @@ affiliations:
 links:
   - icon: at-symbol
     url: mailto:liuyicha23@mails.tsinghua.edu.cn
-    label: E-mail Me
+    label: Email
   - icon: brands/github
     url: https://github.com/lyccc23
+    label: GitHub
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?hl=en&user=63rWqXsAAAAJ
+    label: Google Scholar
 
 interests:
   - World Models

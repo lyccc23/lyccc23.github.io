@@ -10,6 +10,21 @@ authors:
   - Hongning Wang
   - Wenguang Chen
 
+author_symbols: ['*', '*', '', '', '', '†', '†']
+author_notes:
+  - Equal contribution
+  - Equal contribution
+  - ''
+  - ''
+  - ''
+  - Corresponding author
+  - Corresponding author
+author_legend:
+  - symbol: '*'
+    label: Equal contribution
+  - symbol: '†'
+    label: Corresponding authors
+
 date: '2025-07-01'
 publishDate: '2025-07-01'
 publication_types: ['paper-conference']
