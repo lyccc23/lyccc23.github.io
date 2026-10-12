@@ -1,5 +1,5 @@
 {{- $author := index .Site.Data.authors "me" -}}
-{{- $avatar := resources.Get "media/authors/me.png" -}}
+{{- $avatar := resources.Get "media/authors/me.jpg" -}}
 {{- $publications := where (where .Site.RegularPages "Section" "publications") "Params.featured" true -}}
 <!doctype html>
 <html lang="{{ .Site.Language.Lang | default "en" }}">
@@ -84,6 +84,7 @@
       height: 100%;
       display: block;
       object-fit: cover;
+      object-position: 81% center;
     }
 
     .profile h1 {
@@ -302,7 +303,7 @@
   <main class="site-shell">
     <aside class="profile">
       {{ with $avatar }}
-        {{ $avatarSmall := .Fill "336x336 Center" }}
+        {{ $avatarSmall := .Resize "1200x" }}
         <div class="avatar">
           <img src="{{ $avatarSmall.RelPermalink }}" width="{{ $avatarSmall.Width }}" height="{{ $avatarSmall.Height }}" alt="{{ $author.name.display }}">
         </div>
