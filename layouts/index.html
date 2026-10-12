@@ -101,12 +101,6 @@
       font-size: 0.98rem;
     }
 
-    .affiliation {
-      margin-top: 12px;
-      text-align: center;
-      font-weight: 650;
-    }
-
     .profile-links {
       margin-top: 20px;
       display: flex;
@@ -333,16 +327,12 @@
 
       <h1>{{ $author.name.display }}</h1>
       <p class="role">{{ $author.role }}</p>
-      {{ with index $author.affiliations 0 }}
-        <p class="affiliation"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></p>
-      {{ end }}
 
       <div class="profile-links">
         {{ range $author.links }}
           {{ $label := .label | default (replaceRE "^https?://(www\\.)?" "" .url) }}
           <a href="{{ .url }}" {{ if not (hasPrefix .url "mailto:") }}target="_blank" rel="noopener"{{ end }}>{{ $label }}</a>
         {{ end }}
-        <a href="/uploads/resume.pdf" target="_blank" rel="noopener">CV</a>
       </div>
 
       <nav class="nav" aria-label="Homepage">
