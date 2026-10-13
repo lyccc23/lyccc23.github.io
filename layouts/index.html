@@ -1,13 +1,23 @@
 {{- $author := index .Site.Data.authors "me" -}}
 {{- $avatar := resources.Get "media/authors/me.jpg" -}}
 {{- $publications := where (where .Site.RegularPages "Section" "publications") "Params.featured" true -}}
+{{- $sameAs := slice -}}
+{{- range $author.links -}}
+  {{- if hasPrefix .url "https://" -}}
+    {{- $sameAs = $sameAs | append .url -}}
+  {{- end -}}
+{{- end -}}
+{{- $person := dict "@type" "Person" "@id" (printf "%s#person" .Site.Home.Permalink) "name" $author.name.display "description" $author.role "url" .Site.Home.Permalink "image" $avatar.Permalink "affiliation" (dict "@type" "CollegeOrUniversity" "name" (index $author.affiliations 0).name "url" (index $author.affiliations 0).url) "sameAs" $sameAs -}}
+{{- $profile := dict "@context" "https://schema.org" "@type" "ProfilePage" "url" .Site.Home.Permalink "mainEntity" $person -}}
 <!doctype html>
 <html lang="{{ .Site.Language.Lang | default "en" }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $author.name.display }} | Personal Homepage</title>
+  <title>{{ $author.name.display }} | Computer Science, Tsinghua University</title>
   <meta name="description" content="{{ .Site.Params.hugoblox.identity.description }}">
+  <link rel="canonical" href="{{ .Site.Home.Permalink }}">
+  <script type="application/ld+json">{{ $profile | jsonify | safeJS }}</script>
   <style>
     :root {
       --bg: #ffffff;
