@@ -349,7 +349,8 @@
         <a href="#about">About</a>
         <a href="#interests">Interests</a>
         <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
+        <a href="#internship">Internship</a>
+        <a href="#education">Education</a>
       </nav>
     </aside>
 
@@ -412,12 +413,18 @@
         {{ end }}
       </section>
 
-      <section class="section" id="experience">
-        <h2>Experience</h2>
+      <section class="section" id="internship">
+        <h2>Internship</h2>
         <ul class="compact-list">
           {{ range $author.experience }}
             <li>{{ dateFormat "2006.01" .start }} - {{ dateFormat "2006.01" .end }} &nbsp; {{ .role }}, {{ .organization }}</li>
           {{ end }}
+        </ul>
+      </section>
+
+      <section class="section" id="education">
+        <h2>Education</h2>
+        <ul class="compact-list">
           {{ range $author.education }}
             <li>{{ dateFormat "2006.01" .start }} - {{ dateFormat "2006.01" .end }} &nbsp; {{ .degree }}, {{ .institution }}</li>
           {{ end }}
