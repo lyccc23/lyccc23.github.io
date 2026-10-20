@@ -11,11 +11,14 @@ name:
 postnominals: []
 status:
   icon: ''
-role: Third-year undergraduate student, Department of Computer Science, Tsinghua University
+role: Fourth-year undergraduate student, Department of Computer Science, Tsinghua University
 bio: |
-  I am Yichao Liu, a third-year undergraduate student in the Department
+  I am Yichao Liu, a fourth-year undergraduate student in the Department
   of Computer Science at Tsinghua University. My research interests focus
-  on world models and vision-language models. I look forward to exchanging
+  on world models and vision-language models. I have collaborated with
+  Songjie Niu, a postdoctoral researcher in the Department of Computer
+  Science, on Tree-KG, and with Sen Cui, a postdoctoral researcher in the
+  Department of Automation, on RoboCoach. I look forward to exchanging
   ideas with anyone interested in these topics.
 
 affiliations:
@@ -36,6 +39,12 @@ links:
 interests:
   - World Models
   - Vision-Language Models
+
+experience:
+  - role: Intern
+    organization: Beijing Academy of Artificial Intelligence (BAAI)
+    start: 2026-06-01
+    end: 2026-09-30
 
 education:
   - degree: BS Computer Science

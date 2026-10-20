@@ -415,6 +415,9 @@
       <section class="section" id="experience">
         <h2>Experience</h2>
         <ul class="compact-list">
+          {{ range $author.experience }}
+            <li>{{ dateFormat "2006.01" .start }} - {{ dateFormat "2006.01" .end }} &nbsp; {{ .role }}, {{ .organization }}</li>
+          {{ end }}
           {{ range $author.education }}
             <li>{{ dateFormat "2006.01" .start }} - {{ dateFormat "2006.01" .end }} &nbsp; {{ .degree }}, {{ .institution }}</li>
           {{ end }}
